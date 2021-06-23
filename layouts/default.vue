@@ -29,10 +29,4 @@ html {
   box-sizing: border-box;
   margin: 0;
 }
-
-body {
-  h1.title {
-    color: red;
-  }
-}
 </style>
