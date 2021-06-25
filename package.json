@@ -13,6 +13,7 @@
     "nuxt": "^2.15.3"
   },
   "devDependencies": {
+    "@nuxtjs/style-resources": "^1.2.0",
     "fibers": "^5.0.0",
     "gsap": "^3.7.0",
     "pug": "^3.0.2",
