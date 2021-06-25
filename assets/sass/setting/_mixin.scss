@@ -1,0 +1,48 @@
+/* =======================
+ device
+======================= */
+
+@mixin pc-layout ($width: 769px) {
+  @media screen and (min-width: $width) {
+    @content;
+  }
+}
+
+@mixin sp-layout ($width: 768px) {
+  @media screen and (max-width: $width) {
+    @content;
+  }
+}
+
+@mixin sp-450-layout ($width: 450px) {
+  @media screen and (max-width: $width) {
+    @content;
+  }
+}
+
+/* =======================
+ animation
+======================= */
+
+@mixin animation(
+	//引数の設定、順番
+	$name,
+	$duration:          1s, //デフォルト値が設定可能
+	$timing-function:   ease,
+	$delay:             0s,
+	$iteration-count:   1,
+	$direction:         normal,
+	$fill-mode:         forwards,
+	$play-state:        running
+) {
+	animation: {
+		name:               $name;
+		duration:           $duration;
+		timing-function:    $timing-function;
+		delay:              $delay;
+		iteration-count:    $iteration-count;
+		direction:          $direction;
+		fill-mode:          $fill-mode;
+		play-state:         $play-state;
+	}
+}
