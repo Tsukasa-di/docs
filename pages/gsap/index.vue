@@ -1,11 +1,8 @@
 <template lang="pug">
   div
-    h1
-      |Docs.
-    h1
-      |GreenSock
-    h1
-      |Animation Platform
+    .top
+      document
+      app-title
     button(
       @click='click'
       style="width: 1000px; height: 50px;"
@@ -33,7 +30,25 @@
 </template>
 
 <script>
+import routes from "~/.nuxt/routes.json";
+import AppTitle from "~/components/home/AppTitle";
+import document from "~/components/home/document";
+
 export default {
+  components: {
+    AppTitle,
+    document
+  },
+  data() {
+    return {
+      routes: routes
+    }
+  },
+  mounted() {
+    this.routes.forEach( route => {
+      console.log(route.path);
+    });
+  },
   methods: {
     click: function(event) {
       this.$store.commit('changeHeader', event.target.dataset.button);
@@ -47,10 +62,23 @@ export default {
 @use '~/assets/sass/setting/app' as global;
 @use 'sass:map';
 
-h1 {
-  color: map.get(global.$color, sub);
-  font-family: map.get(global.$fonts, title);
-  font-size: 120px;
-  font-weight: normal;
+.top {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.document {
+  position: absolute;
+  transform-origin: left;
+  transform: rotate(-45deg);
+  top: 250px;
+  left: 170px;
+}
+
+.app-title {
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
 }
 </style>

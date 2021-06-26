@@ -1,2 +1,10 @@
 @use '~/assets/sass/setting/app' as global;
 @use 'sass:map';
+
+html, body, #__nuxt, #__layout, #L-default, #main {
+  height: 100%;
+}
+
+p {
+  color: map.get(global.$color, sub);
+}
