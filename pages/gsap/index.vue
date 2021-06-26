@@ -3,34 +3,37 @@
     .top
       document
       app-title
-    button(
-      @click='click'
-      style="width: 1000px; height: 50px;"
-      data-button="top"
-    )
-      |TOP
-    button(
-      @click='click'
-      style="width: 1000px; height: 50px;"
-      data-button="getting-started"
-    )
-      |Getting Started
-    button(
-      @click='click'
-      style="width: 1000px; height: 50px;"
-      data-button="learning"
-    )
-      |Learning
-    button(
-      @click='click'
-      style="width: 1000px; height: 50px;"
-      data-button="samples"
-    )
-      |Samples
+    .select
+      button(
+        @click='click'
+        style="width: 1000px; height: 50px;"
+        data-button="top"
+      )
+        |TOP
+      button(
+        @click='click'
+        style="width: 1000px; height: 50px;"
+        data-button="getting-started"
+      )
+        |Getting Started
+      button(
+        @click='click'
+        style="width: 1000px; height: 50px;"
+        data-button="learning"
+      )
+        |Learning
+      button(
+        @click='click'
+        style="width: 1000px; height: 50px;"
+        data-button="samples"
+      )
+        |Samples
 </template>
 
 <script>
-import routes from "~/.nuxt/routes.json";
+import { AppGsap } from "~/plugins/gsap/app";
+import store from '~/store/index.js';
+import BanEvent from "~/plugins/modules/BanEvent";
 import AppTitle from "~/components/home/AppTitle";
 import document from "~/components/home/document";
 
@@ -41,13 +44,24 @@ export default {
   },
   data() {
     return {
-      routes: routes
+      completedAnimation: false
     }
   },
   mounted() {
-    this.routes.forEach( route => {
-      console.log(route.path);
-    });
+    BanEvent.animationInterval(
+      {start: logStart, finish: logFinish},
+      window,
+      "mousewheel",
+      1500
+    );
+    function logStart() {
+      AppGsap.SmoothScroll(
+        {target: 0}, {duration: 1.5, value: innerHeight, ease: "power3.inOut"}
+      )
+    };
+    function logFinish() {
+      console.log("Animation Finish");
+    };
   },
   methods: {
     click: function(event) {
@@ -62,7 +76,7 @@ export default {
 @use '~/assets/sass/setting/app' as global;
 @use 'sass:map';
 
-.top {
+.top, .select {
   width: 100%;
   height: 100%;
   position: relative;
