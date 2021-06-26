@@ -4,30 +4,7 @@
       document
       app-title
     .select
-      button(
-        @click='click'
-        style="width: 1000px; height: 50px;"
-        data-button="top"
-      )
-        |TOP
-      button(
-        @click='click'
-        style="width: 1000px; height: 50px;"
-        data-button="getting-started"
-      )
-        |Getting Started
-      button(
-        @click='click'
-        style="width: 1000px; height: 50px;"
-        data-button="learning"
-      )
-        |Learning
-      button(
-        @click='click'
-        style="width: 1000px; height: 50px;"
-        data-button="samples"
-      )
-        |Samples
+      selectcards
 </template>
 
 <script>
@@ -36,16 +13,13 @@ import store from '~/store/index.js';
 import BanEvent from "~/plugins/modules/BanEvent";
 import AppTitle from "~/components/home/AppTitle";
 import Document from "~/components/home/Document";
+import Selectcards from "~/components/home/Selectcards";
 
 export default {
   components: {
     AppTitle,
-    Document
-  },
-  data() {
-    return {
-      completedAnimation: false
-    }
+    Document,
+    Selectcards
   },
   mounted() {
     BanEvent.animationInterval(
