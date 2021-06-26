@@ -10,7 +10,11 @@ import AppHeader from "~/components/layouts/AppHeader";
 export default {
   components: {
     AppHeader
-  }
+  },
+  transition: {
+		name: 'page',
+		mode: 'ease'
+	}
 }
 </script>
 
