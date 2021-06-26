@@ -55,16 +55,18 @@ header {
 
   font-family: map.get(global.$fonts, index);
   font-size: 16px;
-  color: map.get(global.$color, _white);
 
   transition: 0.3s;
   box-sizing: border-box;
 
   p {
+    color: map.get(global.$color, _white);
+
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
+
     position: absolute;
     bottom: 4px;
     left: 30px;
@@ -72,7 +74,9 @@ header {
 
   &.top {
     background-color: transparent;
-    color: map.get(global.$color, sub);
+     p {
+       color: map.get(global.$color, sub);
+     }
   }
 
   &.getting-started {
