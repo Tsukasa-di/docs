@@ -61,6 +61,10 @@ export default {
 @use '~/assets/sass/setting/app' as global;
 @use 'sass:map';
 
+p, a {
+  font-family: map.get(global.$fonts, index);
+}
+
 header {
   position: fixed;
   z-index: 999;
@@ -69,14 +73,12 @@ header {
   width: 60px;
   height: 100vh;
 
-  font-family: map.get(global.$fonts, index);
-  font-size: 16px;
-
-  transition: 0.3s;
+  transition: 0.7s;
   box-sizing: border-box;
 
-  p {
+  p, a {
     color: map.get(global.$color, _white);
+    font-size: 16px;
 
     width: 100%;
     height: 100%;
@@ -126,7 +128,7 @@ header {
     text-align: center;
 
     pointer-events: none;
-    transition: 0.3s;
+    transition: 0.7s;
   }
 
   &.false:hover {

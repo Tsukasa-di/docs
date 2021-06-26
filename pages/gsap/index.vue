@@ -9,7 +9,6 @@
 
 <script>
 import { AppGsap } from "~/plugins/gsap/app";
-import store from '~/store/index.js';
 import BanEvent from "~/plugins/modules/BanEvent";
 import AppTitle from "~/components/home/AppTitle";
 import Document from "~/components/home/Document";
@@ -45,11 +44,17 @@ export default {
       VueComponent.$store.commit('changeFirstContact', false);
     };
   },
-  methods: {
-    click: function(event) {
-      this.$store.commit('changeHeader', event.target.dataset.button);
-    }
-  }
+  // transition(to, from) {
+  //   if (to.name === "gsap") {
+  //     return "goHome"
+  //   }
+  // },
+  // transition: {
+  //   beforeEnter(el) {
+  //     console.log('beforeEnter', el)
+  //     console.log(document)
+  //   }
+  // }
 }
 
 </script>
@@ -62,6 +67,12 @@ export default {
   width: 100%;
   height: 100%;
   position: relative;
+}
+
+.select {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .document {

@@ -1,7 +1,7 @@
 <template lang="pug">
   div.app-title
-    div.titles.docs
-      p
+    div.docs
+      p.titles
         |Docs.
       span.docs-decoration
     p.titles.green-sock
@@ -25,6 +25,7 @@ export default {
   font-family: map.get(global.$fonts, title);
   font-size: 120px;
   font-weight: normal;
+  line-height: 1.0;
 }
 
 .docs {
