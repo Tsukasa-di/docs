@@ -1,12 +1,14 @@
 <template lang="pug">
   div#app-header
     header(
-      :class='[headerState.class, headerState.isHome]'
+      :class='[headerState.class, isHomeClass]'
     )
       .header-inner
         p
           |GSAP Docs. - {{ headerState.title }}
-        p.back-home
+        a.back-home(
+          @click='gotoHome'
+        )
           |BACK HOME
 </template>
 
@@ -17,26 +19,39 @@ export default {
       const output = {
         title: "TOP",
         class: "top",
-        isHome: "true"
+        isHome: true
       };
-      if (this.$store.state.header == "top") {
+
+      if (this.$route.path == "/gsap") {
         output.title = "TOP";
         output.class = "top";
-        output.isHome = "true";
-      } else if (this.$store.state.header == "getting-started") {
+        output.isHome = true;
+      } else if (this.$route.path.includes("getting-started")) {
         output.title = "Getting Started";
         output.class = "getting-started";
-        output.isHome = "false";
-      } else if (this.$store.state.header == "learning") {
+        output.isHome = false;
+      } else if (this.$route.path.includes("learning")) {
         output.title = "Learning";
         output.class = "learning";
-        output.isHome = "false";
-      } else if (this.$store.state.header == "samples") {
+        output.isHome = false;
+      } else if (this.$route.path.includes("samples")) {
         output.title = "Samples";
         output.class = "samples";
-        output.isHome = "false";
+        output.isHome = false;
       }
       return output;
+    },
+    isHomeClass: function() {
+      if (!this.headerState.isHome) {
+        return "false";
+      }
+    }
+  },
+  methods: {
+    gotoHome() {
+      if (!this.headerState.isHome) {
+        this.$router.push('/gsap')
+      }
     }
   }
 }
