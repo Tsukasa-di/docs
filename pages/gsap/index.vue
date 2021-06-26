@@ -22,12 +22,19 @@ export default {
     Selectcards
   },
   mounted() {
-    BanEvent.animationInterval(
-      {start: logStart, finish: logFinish},
-      window,
-      "mousewheel",
-      1500
-    );
+    const VueComponent = this;
+    if (this.$store.state.firstContact) {
+      BanEvent.animationInterval(
+        {start: logStart, finish: logFinish},
+        window,
+        "mousewheel",
+        1500
+      );
+    } else {
+      AppGsap.SmoothScroll(
+        {target: 0}, {duration: 1, value: innerHeight, ease: "power3.inOut"}
+      )
+    }
     function logStart() {
       AppGsap.SmoothScroll(
         {target: 0}, {duration: 1.5, value: innerHeight, ease: "power3.inOut"}
@@ -35,6 +42,7 @@ export default {
     };
     function logFinish() {
       console.log("Animation Finish");
+      VueComponent.$store.commit('changeFirstContact', false);
     };
   },
   methods: {
