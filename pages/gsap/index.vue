@@ -35,12 +35,12 @@ import { AppGsap } from "~/plugins/gsap/app";
 import store from '~/store/index.js';
 import BanEvent from "~/plugins/modules/BanEvent";
 import AppTitle from "~/components/home/AppTitle";
-import document from "~/components/home/document";
+import Document from "~/components/home/Document";
 
 export default {
   components: {
     AppTitle,
-    document
+    Document
   },
   data() {
     return {
