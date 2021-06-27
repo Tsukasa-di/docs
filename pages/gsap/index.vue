@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import { gsap } from "gsap";
 import { AppGsap } from "~/plugins/gsap/app";
 import BanEvent from "~/plugins/modules/BanEvent";
 import AppTitle from "~/components/home/AppTitle";
@@ -23,6 +24,7 @@ export default {
   mounted() {
     const VueComponent = this;
     if (this.$store.state.firstContact) {
+      AppGsap.AppearanceTitle(.6);
       BanEvent.animationInterval(
         {start: logStart, finish: logFinish},
         window,
@@ -40,21 +42,9 @@ export default {
       )
     };
     function logFinish() {
-      console.log("Animation Finish");
       VueComponent.$store.commit('changeFirstContact', false);
     };
-  },
-  // transition(to, from) {
-  //   if (to.name === "gsap") {
-  //     return "goHome"
-  //   }
-  // },
-  // transition: {
-  //   beforeEnter(el) {
-  //     console.log('beforeEnter', el)
-  //     console.log(document)
-  //   }
-  // }
+  }
 }
 
 </script>

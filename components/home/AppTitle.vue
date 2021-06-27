@@ -6,8 +6,16 @@
       span.docs-decoration
     p.titles.green-sock
       |GreenSock
+      span.G.GSAP
+        |G
+      span.S.GSAP
+        |S
     p.titles.animation-platform
       |Animation Platform
+      span.A.GSAP
+        |A
+      span.P.GSAP
+        |P
 </template>
 
 <script>
@@ -26,6 +34,21 @@ export default {
   font-size: 120px;
   font-weight: normal;
   line-height: 1.0;
+  position: relative;
+
+  span {
+    color: map.get(global.$color, main);
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    &.S {
+      left: 320px;
+    }
+    &.P {
+      left: 583px;
+    }
+  }
 }
 
 .docs {

@@ -1,5 +1,7 @@
-import { SmoothScroll } from "./modules/SmoothScroll";
+import { SmoothScroll } from "./animations/SmoothScroll";
+import { AppearanceTitle } from "./animations/AppearanceTitle";
 
 export const AppGsap = {
-  SmoothScroll
+  SmoothScroll,
+  AppearanceTitle
 }
