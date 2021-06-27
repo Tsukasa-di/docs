@@ -5,6 +5,10 @@ html, body, #__nuxt, #__layout, #L-default, #main {
   height: 100%;
 }
 
+body {
+  opacity: 0;
+}
+
 p {
   color: map.get(global.$color, sub);
   font-family: map.get(global.$fonts, text);
