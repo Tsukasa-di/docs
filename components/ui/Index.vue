@@ -55,6 +55,12 @@ a {
   left: 59px;
   width: 200px;
   border: 1px solid map.get(global.$color, sub);
+  transition: 1s;
+
+  @include global.sp-layout-lp() {
+    width: 0;
+    opacity: 0;
+  }
 }
 
 .index-title, .index-2, .index-3 {

@@ -20,6 +20,12 @@
   }
 }
 
+@mixin sp-layout-lp ($width: 1286px) {
+  @media screen and (max-width: $width) {
+    @content;
+  }
+}
+
 /* =======================
  animation
 ======================= */

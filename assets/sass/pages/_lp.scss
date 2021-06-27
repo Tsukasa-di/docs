@@ -4,11 +4,21 @@
 .lp {
   display: flex;
   justify-content: center;
-  margin-left: 260px;
+  margin-left: 198px;
+  transition: .5s;
 
   p {
     line-height: 2.0;
     margin-bottom: 30px;
+  }
+
+  @include global.sp-layout-lp() {
+    margin-left: 0;
+
+    .lp-inner {
+      width: 92%;
+      margin: 100px 4% 0 4%;
+    }
   }
 }
 
