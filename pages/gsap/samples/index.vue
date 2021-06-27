@@ -1,7 +1,9 @@
 <template lang="pug">
-  div.pageWrap
+  div
     index
-    selectcards
+    .lp
+      .lp-inner
+        selectcards
 </template>
 
 <script>
@@ -18,17 +20,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@use '~/assets/sass/setting/app' as global;
-@use 'sass:map';
 
-#main.pageWrap {
-  margin-left: 260px;
-}
-
-h1 {
-  color: map.get(global.$color, sub);
-  font-family: map.get(global.$fonts, title);
-  font-size: 120px;
-  font-weight: normal;
-}
 </style>

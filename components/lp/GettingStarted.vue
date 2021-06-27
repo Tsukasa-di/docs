@@ -1,5 +1,5 @@
 <template lang="pug">
-  div#lp
+  div.lp
     .lp-inner
       h2#Summary
         |Summary
