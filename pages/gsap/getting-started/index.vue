@@ -1,17 +1,17 @@
 <template lang="pug">
   div.pageWrap
     index
-    selectcards
+    getting-started
 </template>
 
 <script>
-import Selectcards from "~/components/home/Selectcards";
 import Index from "~/components/ui/Index";
+import GettingStarted from "~/components/lp/GettingStarted";
 
 export default {
   components: {
-    Selectcards,
-    Index
+    Index,
+    GettingStarted
   }
 }
 
