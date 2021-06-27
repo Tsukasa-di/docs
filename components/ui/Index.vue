@@ -56,10 +56,10 @@ a {
   width: 200px;
   border: 1px solid map.get(global.$color, sub);
   transition: 1s;
+  overflow: hidden;
 
   @include global.sp-layout-lp() {
     width: 0;
-    opacity: 0;
   }
 }
 
