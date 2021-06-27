@@ -1,7 +1,9 @@
 <template lang="pug">
   div#L-default
     app-header
-    Nuxt#main
+    Nuxt#main(
+      :class='{ "isHome": isHome }'
+    )
 </template>
 
 <script>
@@ -14,7 +16,16 @@ export default {
   transition: {
 		name: 'page',
 		mode: 'ease'
-	}
+	},
+  computed: {
+    isHome: function() {
+      if (this.$route.name === "gsap") {
+        return true
+      } else {
+        return false
+      }
+    }
+  }
 }
 </script>
 
