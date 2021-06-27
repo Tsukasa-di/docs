@@ -5,6 +5,8 @@
     )
       card(
         :pageId='card.pageId'
+        :title='card.title'
+        :description='card.description'
       )
 </template>
 
@@ -18,7 +20,39 @@ export default {
   data() {
     return {
       cards: [
-        {pageId: "getting-started"}, {pageId: "learning"}, {pageId: "samples"}
+        {
+          pageId: "getting-started",
+          title: "Getting Started",
+          description:
+            "GSAPの基本的な使い方を理解できるページ。\n" +
+            "・GSAPの概要\n" +
+            "・アニメーションの基本\n" +
+            "・Plugin\n" +
+            "・Easing\n" +
+            "・Timeline\n"
+        },
+        {
+          pageId: "learning",
+          title: "Learning",
+          description:
+            "GSAPの基本的な使い方を理解できるページ。\n" +
+            "・GSAPの概要\n" +
+            "・アニメーションの基本\n" +
+            "・Plugin\n" +
+            "・Easing\n" +
+            "・Timeline\n"
+        },
+        {
+          pageId: "samples",
+          title: "Samples",
+          description:
+            "GSAPの基本的な使い方を理解できるページ。\n" +
+            "・GSAPの概要\n" +
+            "・アニメーションの基本\n" +
+            "・Plugin\n" +
+            "・Easing\n" +
+            "・Timeline\n"
+        }
       ]
     }
   }

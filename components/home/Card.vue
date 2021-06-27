@@ -15,57 +15,9 @@
 <script>
 export default {
   props: {
-    pageId: {type: String}
-  },
-  data() {
-    return {
-      info: {
-        getting_started: {
-          title: "Getting Started",
-          description:
-            "GSAPの基本的な使い方を理解できるページ。\n" +
-            "・GSAPの概要\n" +
-            "・アニメーションの基本\n" +
-            "・Plugin\n" +
-            "・Easing\n" +
-            "・Timeline\n"
-        },
-        learning: {
-          title: "Learning",
-          description:
-            "GSAPの基本的な使い方を理解できるページ。\n" +
-            "・GSAPの概要\n" +
-            "・アニメーションの基本\n" +
-            "・Plugin\n" +
-            "・Easing\n" +
-            "・Timeline\n"
-        },
-        samples: {
-          title: "Samples",
-          description:
-            "GSAPの基本的な使い方を理解できるページ。\n" +
-            "・GSAPの概要\n" +
-            "・アニメーションの基本\n" +
-            "・Plugin\n" +
-            "・Easing\n" +
-            "・Timeline\n"
-        }
-      },
-      title: {type: String},
-      description: {type: String}
-    }
-  },
-  mounted() {
-    if (this.pageId === "getting-started") {
-      this.title = this.info.getting_started.title;
-      this.description = this.info.getting_started.description;
-    } else if (this.pageId === "learning") {
-      this.title = this.info.learning.title;
-      this.description = this.info.learning.description;
-    } else if (this.pageId === "samples") {
-      this.title = this.info.samples.title;
-      this.description = this.info.samples.description;
-    }
+    pageId: {type: String},
+    title: {type: String},
+    description: {type: String}
   },
   methods: {
     gotoPage: function(event) {

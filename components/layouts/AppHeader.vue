@@ -21,7 +21,6 @@ export default {
         class: "top",
         isHome: true
       };
-
       if (this.$route.path == "/gsap") {
         output.title = "TOP";
         output.class = "top";
