@@ -15,6 +15,15 @@
       |This Site : GreenSock Animation Platform Document
       br
       |Copyright ©️ Tsukasa Tomioka All Rights Reserved.
+      br
+      br
+      |GitHub
+      br
+      a(
+        href="https://github.com/Tsukasa-di/docs"
+        target="_blank"
+      )
+        |https://github.com/Tsukasa-di/docs
     div
       span
       span
