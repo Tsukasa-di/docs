@@ -20,7 +20,7 @@
   }
 }
 
-@mixin sp-layout-lp ($width: 1286px) {
+@mixin sp-layout-lp ($width: 1060px) {
   @media screen and (max-width: $width) {
     @content;
   }
