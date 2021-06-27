@@ -1,32 +1,36 @@
 <template lang="pug">
-  div
-    Nuxt
+  div#L-default
+    app-header
+    Nuxt#main(
+      :class='{ "isHome": isHome }'
+    )
 </template>
 
-<style lang="scss">
-html {
-  font-family:
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-}
+<script>
+import AppHeader from "~/components/layouts/AppHeader";
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
+export default {
+  components: {
+    AppHeader
+  },
+  transition: {
+		name: 'page',
+		mode: 'ease'
+	},
+  computed: {
+    isHome: function() {
+      if (this.$route.name === "gsap") {
+        return true
+      } else {
+        return false
+      }
+    }
+  }
+}
+</script>
+
+<style lang="scss">
+#main {
+  margin-left: 60px;
 }
 </style>

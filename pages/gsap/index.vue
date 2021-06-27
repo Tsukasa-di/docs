@@ -1,73 +1,98 @@
-<template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">
-        docs
-      </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
-  </div>
+<template lang="pug">
+  div
+    scroll
+    .top
+      document
+      app-title
+    .select
+      selectcards
 </template>
 
 <script>
-export default {}
+import { gsap } from "gsap";
+import { AppGsap } from "~/plugins/gsap/app";
+import BanEvent from "~/plugins/modules/BanEvent";
+import AppTitle from "~/components/home/AppTitle";
+import Document from "~/components/home/Document";
+import Selectcards from "~/components/home/Selectcards";
+import Scroll from "~/components/ui/Scroll";
+
+export default {
+  components: {
+    AppTitle,
+    Document,
+    Selectcards,
+    Scroll
+  },
+  mounted() {
+    const VueComponent = this;
+    if (this.$store.state.firstContact) {
+      // when first visit
+      // -------------------------------------------------
+      document.querySelector("header").style.opacity = "0";
+      AppGsap.AppearanceTitle(.6);
+      BanEvent.animationInterval(
+        {start: logStart, finish: logFinish},
+        window,
+        "mousewheel",
+        1500
+      );
+    } else {
+      // when no first visit
+      // -------------------------------------------------
+      gsap.set("header", {duration: .1, opacity: 1})
+      gsap.set("header p", {duration: .1, color: "#3A404C"})
+      gsap.set("#scroll", {duration: .1, opacity: 0})
+      AppGsap.SmoothScroll(
+        {target: 0}, {duration: 1, value: innerHeight, ease: "power3.inOut"}
+      )
+    }
+    function logStart() {
+      // when trigger event of Auto Smooth Scroll
+      // -------------------------------------------------
+      AppGsap.SmoothScroll(
+        {target: 0}, {duration: 1.5, value: innerHeight, ease: "power3.inOut"}
+      )
+      gsap.to("#scroll", {duration: .7, opacity: 0})
+    };
+    function logFinish() {
+      // when finish event of Auto Smooth Scroll
+      // -------------------------------------------------
+      VueComponent.$store.commit('changeFirstContact', false);
+      gsap.to("header", {duration: .3, opacity: 1})
+    };
+  }
+}
+
 </script>
 
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
+<style lang="scss" scoped>
+@use '~/assets/sass/setting/app' as global;
+@use 'sass:map';
+
+.top, .select {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.select {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  text-align: center;
 }
 
-.title {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
+.document {
+  position: absolute;
+  transform-origin: left;
+  transform: rotate(-45deg);
+  top: 250px;
+  left: 170px;
 }
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+.app-title {
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
 }
 </style>

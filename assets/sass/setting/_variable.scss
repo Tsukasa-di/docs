@@ -1,0 +1,22 @@
+$color: (
+  base: #FFFFFF,
+  main: #40C1AC,
+  sub: #3A404C,
+  sub-thin: #D8DBE3,
+  _white: #FFFFFF,
+  _yellow: #FFAD00,
+  _blue: #5C88DA,
+  _red: #D22730
+);
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300;1,400;1,500&family=Stardos+Stencil:wght@400;700&display=swap');
+
+$StardosStencil: 'Stardos Stencil', cursive;
+$Oswald: 'Oswald', sans-serif;
+$Roboto: 'Roboto', sans-serif;
+
+$fonts: (
+  title: $StardosStencil,
+  index: $Oswald,
+  text: $Roboto
+);

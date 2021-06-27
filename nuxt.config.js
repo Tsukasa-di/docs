@@ -1,3 +1,6 @@
+const SASS      = require('sass')
+const FIBER     = require('fibers')
+
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
@@ -34,10 +37,22 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-  ],
+  modules: ['@nuxtjs/style-resources'],
+  styleResources: {
+   scss: [
+    '~/assets/sass/_app.scss'
+    ]
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    loaders: {
+      scss: {
+        implementation: SASS,
+        sassOptions: {
+          fiber: FIBER
+        }
+      }
+    }
   }
 }
