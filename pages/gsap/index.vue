@@ -1,5 +1,6 @@
 <template lang="pug">
   div
+    scroll
     .top
       document
       app-title
@@ -14,12 +15,14 @@ import BanEvent from "~/plugins/modules/BanEvent";
 import AppTitle from "~/components/home/AppTitle";
 import Document from "~/components/home/Document";
 import Selectcards from "~/components/home/Selectcards";
+import Scroll from "~/components/ui/Scroll";
 
 export default {
   components: {
     AppTitle,
     Document,
-    Selectcards
+    Selectcards,
+    Scroll
   },
   mounted() {
     const VueComponent = this;
@@ -32,6 +35,8 @@ export default {
         1500
       );
     } else {
+      gsap.set("header", {duration: .1, opacity: 1})
+      gsap.set("#scroll", {duration: .1, opacity: 0})
       AppGsap.SmoothScroll(
         {target: 0}, {duration: 1, value: innerHeight, ease: "power3.inOut"}
       )
@@ -40,9 +45,11 @@ export default {
       AppGsap.SmoothScroll(
         {target: 0}, {duration: 1.5, value: innerHeight, ease: "power3.inOut"}
       )
+      gsap.to("#scroll", {duration: .7, opacity: 0})
     };
     function logFinish() {
       VueComponent.$store.commit('changeFirstContact', false);
+      gsap.to("header", {duration: .3, opacity: 1})
     };
   }
 }

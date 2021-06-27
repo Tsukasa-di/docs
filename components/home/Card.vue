@@ -2,11 +2,10 @@
   div.card(
     @click='gotoPage'
     :data-pageid='pageId'
+    :class='pageId'
   )
     .card-inner
-      p.title(
-        :class='pageId'
-      )
+      p.title
         |{{title}}
       p.description
         |{{description}}
@@ -44,6 +43,22 @@ export default {
   position: relative;
   overflow: hidden;
   cursor: pointer;
+
+  &.getting-started {
+    .title {
+      background-color: map.get(global.$color, _yellow);
+    }
+  }
+  &.learning {
+    .title {
+      background-color: map.get(global.$color, _blue);
+    }
+  }
+  &.samples {
+    .title {
+      background-color: map.get(global.$color, _red);
+    }
+  }
 }
 
 .card-inner {
@@ -68,16 +83,6 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-
-  &.getting-started {
-    background-color: map.get(global.$color, _yellow);
-  }
-  &.learning {
-    background-color: map.get(global.$color, _blue);
-  }
-  &.samples {
-    background-color: map.get(global.$color, _red);
-  }
 }
 
 .description {

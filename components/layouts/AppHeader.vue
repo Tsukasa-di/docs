@@ -65,6 +65,7 @@ p, a {
 }
 
 header {
+  opacity: 0;
   position: fixed;
   z-index: 999;
   top: 0;
@@ -142,6 +143,5 @@ header {
       pointer-events: visible;
     }
   }
-
 }
 </style>
