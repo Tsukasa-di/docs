@@ -97,10 +97,8 @@ export default {
             // ---------------------------------
             duration: 1,
             ease: CustomEase.create("custom", "M0,0 C0.068,0 0.179,-0.14 0.226,-0.16 0.275,-0.181 0.356,-0.228 0.404,-0.186 0.473,-0.125 0.502,0.156 0.518,0.226 0.558,0.404 0.577,0.659 0.616,0.836 0.644,0.965 0.651,1.042 0.705,1.082 0.748,1.114 0.799,1.094 0.817,1.085 0.868,1.061 0.938,0.998 1,1 "),
-            x: ( -this.$refs.cardInner.getBoundingClientRect().right ) + 166,
-            onComplete: function() {
-              VueComponent.$router.push("/gsap/" + VueComponent.$refs.card.dataset.pageid)
-            }
+            x: ( -this.$refs.cardInner.getBoundingClientRect().right ) + 183,
+            width: 60,
           })
           .to(this.$refs.cardInner, {
             // scale up .card-inner
@@ -108,10 +106,11 @@ export default {
             duration: .6,
             ease: "power2.inOut",
             height: innerHeight,
-            width: 60,
-            x: ( -this.$refs.cardInner.getBoundingClientRect().right ) + 178,
             borderRadius: 0,
-          }, "-=.2")
+            onComplete: function() {
+              VueComponent.$router.push("/gsap/" + VueComponent.$refs.card.dataset.pageid)
+            }
+          })
           .to(".header-inner p", {
             // change color of header paragraph
             // ---------------------------------
