@@ -54,7 +54,7 @@ export default {
         {target: 0}, {duration: 1.5, value: innerHeight, ease: "power3.inOut"}
       )
       gsap.to("#scroll", {duration: .7, opacity: 0})
-      gsap.set(".cards-wrap", {opacity: 0, rotationY: 200, rotationX: 20})
+      gsap.set(".cards-wrap", {opacity: 0, rotationY: 200})
     };
     function scrollFinish() {
       // when finish event of Auto Smooth Scroll

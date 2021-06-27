@@ -7,7 +7,6 @@ export function AppearanceCards(duration=1) {
       stagger: .5,
       opacity: 1,
       rotationY: 0,
-      rotationX: 0,
       ease: "power3.inOut"
     })
 }
