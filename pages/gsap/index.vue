@@ -32,7 +32,7 @@ export default {
       document.querySelector("header").style.opacity = "0";
       AppGsap.AppearanceTitle(.6);
       BanEvent.animationInterval(
-        {start: logStart, finish: logFinish},
+        {start: scrollStart, finish: scrollFinish},
         window,
         "mousewheel",
         1500
@@ -47,19 +47,21 @@ export default {
         {target: 0}, {duration: 1, value: innerHeight, ease: "power3.inOut"}
       )
     }
-    function logStart() {
+    function scrollStart() {
       // when trigger event of Auto Smooth Scroll
       // -------------------------------------------------
       AppGsap.SmoothScroll(
         {target: 0}, {duration: 1.5, value: innerHeight, ease: "power3.inOut"}
       )
       gsap.to("#scroll", {duration: .7, opacity: 0})
+      gsap.set(".cards-wrap", {opacity: 0, rotationY: 200, rotationX: 20})
     };
-    function logFinish() {
+    function scrollFinish() {
       // when finish event of Auto Smooth Scroll
       // -------------------------------------------------
       VueComponent.$store.commit('changeFirstContact', false);
       gsap.to("header", {duration: .3, opacity: 1})
+      AppGsap.AppearanceCards()
     };
   }
 }
