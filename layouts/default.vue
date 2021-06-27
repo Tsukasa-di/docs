@@ -20,9 +20,26 @@ export default {
   computed: {
     isHome: function() {
       if (this.$route.name === "gsap") {
-        return true
+        return true;
       } else {
-        return false
+        return false;
+      }
+    }
+  },
+  mounted() {
+    if (this.$route.name !== "gsap") {
+      document.querySelector("html").classList.add("isnotHome");
+    }
+  },
+  watch: {
+    "$route": function (to, from) {
+      if (from.name === "gsap") {
+        setTimeout(() => {
+          document.querySelector("html").classList.add("isnotHome");
+        }, 700);
+      }
+      if (to.name === "gsap") {
+        document.querySelector("html").classList.remove("isnotHome");
       }
     }
   }
