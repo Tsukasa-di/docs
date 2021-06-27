@@ -1,20 +1,17 @@
 <template lang="pug">
-  div
-    h1
-      |Docs.
-    h1
-      |GreenSock
-    h1
-      |Animation Platform
+  div.pageWrap
+    index
     selectcards
 </template>
 
 <script>
 import Selectcards from "~/components/home/Selectcards";
+import Index from "~/components/ui/Index";
 
 export default {
   components: {
-    Selectcards
+    Selectcards,
+    Index
   }
 }
 
@@ -23,6 +20,10 @@ export default {
 <style lang="scss" scoped>
 @use '~/assets/sass/setting/app' as global;
 @use 'sass:map';
+
+#main.pageWrap {
+  margin-left: 260px;
+}
 
 h1 {
   color: map.get(global.$color, sub);
