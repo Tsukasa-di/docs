@@ -2,6 +2,7 @@ import { gsap } from "gsap";
 import "../effects";
 
 export function AppearanceTitle(duration=1, y=50) {
+  document.querySelector("body").style.opacity = "0";
   gsap.timeline({ defaults: {duration: duration} })
     .to("body", {opacity: 1, ease: "power4.in"})
     .fadeUp(".docs", {y: y}, "-=.5")
