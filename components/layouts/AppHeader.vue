@@ -65,7 +65,6 @@ p, a {
 }
 
 header {
-  opacity: 0;
   position: fixed;
   z-index: 999;
   top: 0;

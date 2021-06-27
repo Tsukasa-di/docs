@@ -15,22 +15,22 @@ export default {
   mounted() {
     gsap.timeline({repeat: -1, repeatDelay: 1})
       .to(this.$refs.scroll, {
-        duration: 1,
+        duration: .7,
         ease: "none",
         width: 40
       })
       .to(this.$refs.scroll, {
-        duration: 1,
+        duration: .7,
         ease: "none",
         right: 30
       }, "<")
       .to(this.$refs.scroll, {
-        duration: 1,
+        duration: .7,
         ease: "none",
         width: 0
       })
       .to(this.$refs.scroll, {
-        duration: 1,
+        duration: .7,
         ease: "none",
         right: 70
       }, "<")

@@ -27,6 +27,9 @@ export default {
   mounted() {
     const VueComponent = this;
     if (this.$store.state.firstContact) {
+      // when first visit
+      // -------------------------------------------------
+      document.querySelector("header").style.opacity = "0";
       AppGsap.AppearanceTitle(.6);
       BanEvent.animationInterval(
         {start: logStart, finish: logFinish},
@@ -35,19 +38,26 @@ export default {
         1500
       );
     } else {
+      // when no first visit
+      // -------------------------------------------------
       gsap.set("header", {duration: .1, opacity: 1})
+      gsap.set("header p", {duration: .1, color: "#3A404C"})
       gsap.set("#scroll", {duration: .1, opacity: 0})
       AppGsap.SmoothScroll(
         {target: 0}, {duration: 1, value: innerHeight, ease: "power3.inOut"}
       )
     }
     function logStart() {
+      // when trigger event of Auto Smooth Scroll
+      // -------------------------------------------------
       AppGsap.SmoothScroll(
         {target: 0}, {duration: 1.5, value: innerHeight, ease: "power3.inOut"}
       )
       gsap.to("#scroll", {duration: .7, opacity: 0})
     };
     function logFinish() {
+      // when finish event of Auto Smooth Scroll
+      // -------------------------------------------------
       VueComponent.$store.commit('changeFirstContact', false);
       gsap.to("header", {duration: .3, opacity: 1})
     };

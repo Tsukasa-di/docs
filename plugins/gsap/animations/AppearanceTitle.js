@@ -8,8 +8,9 @@ export function AppearanceTitle(duration=1, y=50) {
     .fadeUp(".docs", {y: y}, "-=.5")
     .fadeUp(".green-sock", {y: y}, "-=.4")
     .fadeUp(".animation-platform", {y: y}, "-=.4")
-    .fadeIn(".G", {duration: .4,})
+    .fadeIn(".G", {duration: .4,}, "-=.4")
     .fadeIn(".S", {duration: .4,}, "-=.1")
     .fadeIn(".A", {duration: .4,}, "-=.1")
     .fadeIn(".P", {duration: .4,}, "-=.1")
+    .fadeIn("#scroll", {duration: .4,}, "-=.1")
 }
