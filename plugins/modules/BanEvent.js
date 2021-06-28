@@ -17,7 +17,7 @@ banEvent.animationInterval = function(callback, target, event, interval) {
     setTimeout(() => {
       target.removeEventListener(event, banEvent, { passive: false });
     }, interval);
-    setInterval(() => {
+    setTimeout(() => {
       callback.finish();
     }, interval-500);
   }
