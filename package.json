@@ -14,6 +14,7 @@
   },
   "devDependencies": {
     "@nuxtjs/style-resources": "^1.2.0",
+    "animejs": "^3.2.1",
     "fibers": "^5.0.0",
     "gsap": "npm:@gsap/member@^3.7.0",
     "pug": "^3.0.2",
