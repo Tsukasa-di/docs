@@ -68,11 +68,14 @@ a {
   top: -1px;
   left: 59px;
 
+  border-right: 1px solid map.get(global.$color, sub-thin);
+
   transition: 1s;
   overflow: hidden;
 
   @include global.sp-layout-lp() {
     width: 0;
+    border: none;
   }
 }
 

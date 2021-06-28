@@ -114,4 +114,11 @@ export default {
   bottom: 50px;
   right: 50px;
 }
+
+@include global.sp-layout-lp() {
+  .app-title {
+    right: 10px;
+    bottom: 10px;
+  }
+}
 </style>

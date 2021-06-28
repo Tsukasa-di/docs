@@ -47,7 +47,14 @@ export default {
 </script>
 
 <style lang="scss">
+@use '~/assets/sass/setting/_app' as global;
+@use 'sass:map';
+
 #main {
   margin-left: 60px;
+
+  @include global.sp-layout() {
+    margin-left: 0px;
+  }
 }
 </style>

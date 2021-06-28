@@ -19,6 +19,10 @@ p, pre {
   font-family: map.get(global.$fonts, text);
   line-height: 1.5;
   font-size: 17px;
+
+  @include global.sp-layout() {
+    font-size: 14px;
+  }
 }
 
 pre {
@@ -31,5 +35,17 @@ pre {
 
   .pln, .pun {
     color: #cccccc;
+  }
+}
+
+section {
+  margin-bottom: 100px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @include global.sp-layout() {
+    margin-bottom: 50px;
   }
 }

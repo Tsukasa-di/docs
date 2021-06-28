@@ -142,5 +142,27 @@ header {
       pointer-events: visible;
     }
   }
+
+  @include global.sp-layout() {
+    width: 40px;
+    top: unset;
+    bottom: 0;
+    height: 40px;
+    width: 100%;
+
+    .header-inner {
+      height: 40px;
+      transform: rotate(0deg);
+      position: relative;
+      top: 0;
+      right: unset;
+    }
+
+    p, a {
+      font-size: 12px;
+      bottom: 0px;
+      left: 10px;
+    }
+  }
 }
 </style>
