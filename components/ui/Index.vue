@@ -25,9 +25,6 @@
 import { AppGsap } from "~/plugins/gsap/app";
 
 export default {
-  mounted() {
-    this.$refs.index.style.height = innerHeight + 2 + "px";
-  },
   props: {
     indexes: {type: Array}
   },
@@ -65,11 +62,12 @@ a {
 }
 
 #index {
+  width: 200px;
+  height: 100%;
   position: fixed;
   top: -1px;
   left: 59px;
-  width: 200px;
-  border: 1px solid map.get(global.$color, sub);
+
   transition: 1s;
   overflow: hidden;
 
@@ -97,9 +95,9 @@ a {
 .index-2 {
   position: relative;
   height: 60px;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: normal;
-  border: 1px solid map.get(global.$color, sub);
+  border-bottom: 1px solid map.get(global.$color, sub-thin);
 
   &:hover {
     color: map.get(global.$color, main);
@@ -121,7 +119,7 @@ a {
 }
 
 .index-3 {
-  height: 40px;
+  height: 55px;
   font-size: 16px;
 
   &:hover {
