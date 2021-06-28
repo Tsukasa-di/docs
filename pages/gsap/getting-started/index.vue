@@ -143,6 +143,13 @@ import Index from "~/components/ui/Index";
 import { MakeIndexArray } from "~/plugins/modules/MakeIndexArray";
 
 export default {
+  head() {
+    return {
+      script: [
+        { src: 'https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?skin=sons-of-obsidian', type: 'text/javascript' }
+      ]
+    }
+  },
   components: {
     Index
   },
