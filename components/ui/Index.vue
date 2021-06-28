@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { gsap } from "gsap";
+import { AppGsap } from "~/plugins/gsap/app";
 
 export default {
   mounted() {
@@ -44,16 +44,14 @@ export default {
         const scrollObj = {
           value: VueComponent.$root.$el.scrollTop
         }
-        gsap.to(scrollObj, {
-          duration: 1,
-          ease: "power3.inOut",
-          value: VueComponent.$root.$el.scrollTop + targetEl.getBoundingClientRect().top,
-          onUpdate: function() {
-            VueComponent.$root.$el.scrollTo({
-              top: scrollObj.value
-            });
-          }
-        })
+        function SmoothScroll(targetValue) {
+          VueComponent.$root.$el.scrollTo({
+            top: targetValue
+          });
+        }
+        AppGsap.SmoothScroll(
+          {currentValue: VueComponent.$root.$el.scrollTop}, {duration: .7, targetValue: VueComponent.$root.$el.scrollTop + targetEl.getBoundingClientRect().top}, SmoothScroll
+        )
       }
     }
   }
