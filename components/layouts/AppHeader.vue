@@ -1,9 +1,20 @@
 <template lang="pug">
-  div#app-header
+  div#app-header(
+    ref="appHeader"
+  )
+    navi
     header(
       :class='[headerState.class, isHomeClass]'
     )
       .header-inner
+        .navi-trigger(
+          ref="naviTrigger"
+          @click='clickNaviTrigger'
+        )
+          span
+          span
+          span.menu
+            |MENU
         p
           |GSAP Docs. - {{ headerState.title }}
         a.back-home(
@@ -13,7 +24,20 @@
 </template>
 
 <script>
+import Navi from "~/components/layouts/Navi";
+
 export default {
+  components: {
+    Navi
+  },
+  mounted() {
+    this.$refs.naviTrigger.addEventListener("mouseenter", event => {
+      this.$refs.appHeader.classList.add("naviHover");
+    })
+    this.$refs.naviTrigger.addEventListener("mouseleave", event => {
+      this.$refs.appHeader.classList.remove("naviHover");
+    })
+  },
   computed: {
     headerState: function() {
       const output = {
@@ -51,6 +75,9 @@ export default {
       if (!this.headerState.isHome) {
         this.$router.push('/gsap')
       }
+    },
+    clickNaviTrigger() {
+      this.$refs.appHeader.classList.toggle("naviActive");
     }
   }
 }
@@ -72,7 +99,7 @@ header {
   width: 60px;
   height: 100vh;
 
-  transition: 0.7s;
+  transition: 0.7s ease-in-out;
   box-sizing: border-box;
 
   p, a {
@@ -111,11 +138,51 @@ header {
   .header-inner {
     width: 100vh;
     height: 60px;
+
     position: relative;
     top: 0;
     right: 100vh;
+    border-bottom: 1px solid transparent;
+
     transform-origin: top right;
     transform: rotate(270deg);
+    transition: .5s;
+  }
+
+  .navi-trigger {
+    cursor: pointer;
+    position: absolute;
+    z-index: 1;
+    top: 0px;
+    right: 0px;
+
+    height: 100%;
+    width: 100px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    span {
+      display: block;
+      width: 30px;
+      height: 3px;
+      background-color: map.get(global.$color, _white);
+      transition: .5s;
+
+      &:nth-child(2) {
+        margin: 6px 0 3px 0;
+      }
+
+      &:last-child {
+        height: auto;
+        background-color: transparent;
+        font-size: 11px;
+        color: map.get(global.$color, _white);
+        font-family: map.get(global.$fonts, text);
+      }
+    }
   }
 
   .back-home {
@@ -162,6 +229,75 @@ header {
       font-size: 12px;
       bottom: 0px;
       left: 10px;
+    }
+  }
+}
+
+.naviHover, .naviActive {
+  header.false {
+    border: none;
+
+    .back-home {
+      color: transparent;
+    }
+
+    &.getting-started {
+      background-color: map.get(global.$color, _yellow);
+    }
+
+    &.learning {
+      background-color: map.get(global.$color, _blue);
+    }
+
+    &.samples {
+      background-color: map.get(global.$color, _red);
+    }
+  }
+}
+
+.naviHover {
+  header.false {
+    width: 80px;
+
+    .navi-trigger {
+      span:nth-child(1) {
+        height: 4px;
+        transform: translateY(9px) rotate(35deg);
+      }
+      .menu {
+        opacity: 0;
+      }
+    }
+  }
+}
+
+.naviActive {
+  #Navi {
+    opacity: 1;
+    pointer-events: visible;
+    width: 90%;
+  }
+
+  header.false {
+    width: 100vw;
+    cursor: unset;
+
+    .header-inner {
+      border-bottom: 1px solid map.get(global.$color, _white);
+    }
+
+    .navi-trigger {
+      span:nth-child(1) {
+        height: 4px;
+        transform: translateY(9px) rotate(45deg);
+      }
+      span:nth-child(2) {
+        height: 4px;
+        transform: rotate(-45deg);
+      }
+      .menu {
+        opacity: 0;
+      }
     }
   }
 }
