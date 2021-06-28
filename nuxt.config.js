@@ -18,6 +18,9 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ],
+    script: [
+      { src: 'https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?lang=js&skin=sons-of-obsidian', type: 'text/javascript' }
     ]
   },
 
