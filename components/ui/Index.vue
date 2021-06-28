@@ -36,7 +36,7 @@ export default {
       const VueComponent = this;
       let targetEl = "";
       this.$root.$el.querySelectorAll("*[id]").forEach( el => {
-        if (el.id.includes(event.target.getAttribute("href"))) {
+        if (event.target.getAttribute("href").includes(el.id)) {
           targetEl = el;
         }
       })
