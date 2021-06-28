@@ -41,9 +41,6 @@ export default {
         }
       })
       if (targetEl) {
-        const scrollObj = {
-          value: VueComponent.$root.$el.scrollTop
-        }
         function SmoothScroll(targetValue) {
           VueComponent.$root.$el.scrollTo({
             top: targetValue
