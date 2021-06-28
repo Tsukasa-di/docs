@@ -1,11 +1,11 @@
 @use '~/assets/sass/setting/app' as global;
 @use 'sass:map';
 
-html.isnotHome {
+html.isnotHome body {
   height: 100vh;
   overflow: hidden;
 
-  body {
+  #__nuxt {
     overflow: scroll;
   }
 }

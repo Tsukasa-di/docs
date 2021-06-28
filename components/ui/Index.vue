@@ -8,11 +8,13 @@
       v-for='index in indexes'
     )
       a.index-2(
+        @click='clickIndex'
         :href='"#" + index.index2'
       )
         |{{index.index2}}
         span
       a.index-3(
+        @click='clickIndex'
         v-for='index3 in index.contents'
         :href='"#" + index3'
       )
@@ -20,12 +22,40 @@
 </template>
 
 <script>
+import { gsap } from "gsap";
+
 export default {
   mounted() {
     this.$refs.index.style.height = innerHeight + 2 + "px";
   },
   props: {
     indexes: {type: Array}
+  },
+  methods: {
+    clickIndex: function(event) {
+      const VueComponent = this;
+      let targetEl = "";
+      this.$root.$el.querySelectorAll("*[id]").forEach( el => {
+        if (el.id.includes(event.target.getAttribute("href"))) {
+          targetEl = el;
+        }
+      })
+      if (targetEl) {
+        const scrollObj = {
+          value: VueComponent.$root.$el.scrollTop
+        }
+        gsap.to(scrollObj, {
+          duration: 1,
+          ease: "power3.inOut",
+          value: VueComponent.$root.$el.scrollTop + targetEl.getBoundingClientRect().top,
+          onUpdate: function() {
+            VueComponent.$root.$el.scrollTo({
+              top: scrollObj.value
+            });
+          }
+        })
+      }
+    }
   }
 }
 </script>
