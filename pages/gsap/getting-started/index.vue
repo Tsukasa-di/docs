@@ -6,9 +6,9 @@
     .lp
       .lp-inner
         h2(
-          id="Summary"
+          :id='"#" + indexObj.Summary'
         )
-          |Summary
+          |{{indexObj.Summary}}
           span
         p
           |timelineメソッドは、個々のアニメーションを繋げて実行することができるメソッドです。例えるなら、パワーポイントのアニメーション。1つ目のアニメーションが終了すれば、次のアニメーションに移る事もできるし、前回のアニメーションと同時に実行する事もできます。
@@ -54,6 +54,20 @@ export default {
           contents: ["gsap.to()", "gsap.from()", "gsap.fromTo()"]
         }
       ]
+    }
+  },
+  computed: {
+    indexObj: function() {
+      const indexObj = {};
+      this.indexes.forEach( index => {
+        indexObj[index.index2] = index.index2;
+        if (index.contents !== undefined) {
+          index.contents.forEach( content => {
+            indexObj[content] = content;
+          });
+        }
+      });
+      return indexObj
     }
   }
 }
