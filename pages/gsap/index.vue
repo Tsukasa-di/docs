@@ -5,7 +5,9 @@
       document
       app-title
     .select
-      selectcards
+      selectcards(
+        ref="selectcards"
+      )
 </template>
 
 <script>
@@ -61,7 +63,14 @@ export default {
       // -------------------------------------------------
       VueComponent.$store.commit('changeFirstContact', false);
       gsap.to("header", {duration: .3, opacity: 1})
-      AppGsap.AppearanceCards()
+      gsap.timeline()
+        .to(VueComponent.$refs.selectcards.$el.querySelectorAll(".cards-wrap"), {
+          duration: 1,
+          stagger: .5,
+          opacity: 1,
+          rotationY: 0,
+          ease: "power3.inOut"
+        })
     };
   }
 }

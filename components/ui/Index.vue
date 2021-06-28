@@ -24,18 +24,8 @@ export default {
   mounted() {
     this.$refs.index.style.height = innerHeight + 2 + "px";
   },
-  data() {
-    return {
-      indexes: [
-        {
-          index2: "Summary",
-        },
-        {
-          index2: "Basic",
-          contents: ["gsap.to()", "gsap.from()", "gsap.fromTo()"]
-        }
-      ]
-    }
+  props: {
+    indexes: {type: Array}
   }
 }
 </script>
