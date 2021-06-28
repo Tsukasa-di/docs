@@ -64,7 +64,6 @@ export default {
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-bottom: 30px;
 }
 
 .cards-wrap {
