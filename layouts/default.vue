@@ -15,11 +15,6 @@ export default {
 		name: 'page',
 		mode: 'ease'
 	},
-  data() {
-    return {
-      beforePageClass: {type: String}
-    }
-  },
   methods: {
     currentPageInfoResult: function() {
       const currentPageInfo = {};
