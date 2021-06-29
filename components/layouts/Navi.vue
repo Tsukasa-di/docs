@@ -122,6 +122,8 @@ body#top {
     a {
       color: map.get(global.$color, _white);
       text-decoration: none;
+      display: block;
+      width: 100%;
     }
 
     span {
