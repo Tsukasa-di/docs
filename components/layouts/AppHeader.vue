@@ -74,6 +74,7 @@ export default {
     gotoHome() {
       if (!this.headerState.isHome) {
         this.$router.push('/gsap')
+        this.$refs.appHeader.classList.remove("naviActive");
       }
     },
     clickNaviTrigger() {
@@ -281,12 +282,14 @@ header {
   header.false {
     width: 100vw;
     cursor: unset;
+    pointer-events: none;
 
     .header-inner {
       border-bottom: 1px solid map.get(global.$color, _white);
     }
 
     .navi-trigger {
+      pointer-events: visible;
       span:nth-child(1) {
         height: 4px;
         transform: translateY(9px) rotate(45deg);

@@ -3,6 +3,8 @@
     index
     .lp
       .lp-inner
+        h2
+          |Coming Soon...
         selectcards
 </template>
 
@@ -20,5 +22,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+h2 {
+  margin-bottom: 70px !important;
+}
 </style>
