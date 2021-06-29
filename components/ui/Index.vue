@@ -8,11 +8,13 @@
       v-for='index in indexes'
     )
       a.index-2(
+        @click='clickIndex'
         :href='"#" + index.index2'
       )
         |{{index.index2}}
         span
       a.index-3(
+        @click='clickIndex'
         v-for='index3 in index.contents'
         :href='"#" + index3'
       )
@@ -20,21 +22,31 @@
 </template>
 
 <script>
+import { AppGsap } from "~/plugins/gsap/app";
+
 export default {
-  mounted() {
-    this.$refs.index.style.height = innerHeight + 2 + "px";
+  props: {
+    indexes: {type: Array}
   },
-  data() {
-    return {
-      indexes: [
-        {
-          index2: "Summary",
-        },
-        {
-          index2: "Basic",
-          contents: ["gsap.to()", "gsap.from()", "gsap.fromTo()"]
+  methods: {
+    clickIndex: function(event) {
+      const VueComponent = this;
+      let targetEl = "";
+      this.$root.$el.querySelectorAll("*[id]").forEach( el => {
+        if (event.target.getAttribute("href").includes(el.id)) {
+          targetEl = el;
         }
-      ]
+      })
+      if (targetEl) {
+        function SmoothScroll(targetValue) {
+          VueComponent.$root.$el.scrollTo({
+            top: targetValue
+          });
+        }
+        AppGsap.SmoothScroll(
+          {currentValue: VueComponent.$root.$el.scrollTop}, {duration: .7, targetValue: VueComponent.$root.$el.scrollTop + targetEl.getBoundingClientRect().top}, SmoothScroll
+        )
+      }
     }
   }
 }
@@ -50,11 +62,21 @@ a {
 }
 
 #index {
+  width: 200px;
+  height: 100%;
   position: fixed;
   top: -1px;
   left: 59px;
-  width: 200px;
-  border: 1px solid map.get(global.$color, sub);
+
+  border-right: 1px solid map.get(global.$color, sub-thin);
+
+  transition: 1s;
+  overflow: hidden;
+
+  @include global.sp-layout-lp() {
+    width: 0;
+    border: none;
+  }
 }
 
 .index-title, .index-2, .index-3 {
@@ -76,9 +98,9 @@ a {
 .index-2 {
   position: relative;
   height: 60px;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: normal;
-  border: 1px solid map.get(global.$color, sub);
+  border-bottom: 1px solid map.get(global.$color, sub-thin);
 
   &:hover {
     color: map.get(global.$color, main);
@@ -100,7 +122,7 @@ a {
 }
 
 .index-3 {
-  height: 40px;
+  height: 55px;
   font-size: 16px;
 
   &:hover {

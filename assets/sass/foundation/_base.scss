@@ -1,13 +1,51 @@
 @use '~/assets/sass/setting/app' as global;
 @use 'sass:map';
 
+html.isnotHome body {
+  height: 100vh;
+  overflow: hidden;
+
+  #__nuxt {
+    overflow: scroll;
+  }
+}
+
 html, body, #__nuxt, #__layout, #L-default, #main {
   height: 100%;
 }
 
-p {
+p, pre {
   color: map.get(global.$color, sub);
   font-family: map.get(global.$fonts, text);
   line-height: 1.5;
-  font-size: 19px;
+  font-size: 17px;
+
+  @include global.sp-layout() {
+    font-size: 14px;
+  }
+}
+
+pre {
+  padding: 10px;
+  border-radius: 10px;
+
+  &.linenums {
+    padding-left: 35px;
+  }
+
+  .pln, .pun {
+    color: #cccccc;
+  }
+}
+
+section {
+  margin-bottom: 100px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @include global.sp-layout() {
+    margin-bottom: 50px;
+  }
 }

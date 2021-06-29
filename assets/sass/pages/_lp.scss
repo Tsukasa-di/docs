@@ -1,0 +1,73 @@
+@use '~/assets/sass/setting/_app' as global;
+@use 'sass:map';
+
+.lp {
+  display: flex;
+  justify-content: center;
+  margin-left: 198px;
+  transition: 1s;
+
+  .lp-inner {
+    width: 740px;
+    margin: 100px 50px 100px 0;
+  }
+
+  @include global.sp-layout-lp() {
+    margin-left: 0;
+
+    .lp-inner {
+      width: 92%;
+      margin: 0px 4% 40px 4%;
+    }
+  }
+
+  p {
+    line-height: 2.0;
+    margin-bottom: 30px;
+  }
+
+  pre {
+    margin-bottom: 30px;
+  }
+
+  h2 {
+    color: map.get(global.$color, main);
+    font-family: map.get(global.$fonts, index);
+    font-weight: normal;
+    font-size: 52px;
+
+    height: 100px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    span {
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      height: 1px;
+      width: 100%;
+      background-color: map.get(global.$color, sub);
+    }
+
+    @include global.sp-layout() {
+      font-size: 42px;
+    }
+  }
+
+  h3 {
+    color: map.get(global.$color, sub);
+    font-family: map.get(global.$fonts, index);
+    font-weight: normal;
+    font-size: 42px;
+    line-height: 102px;
+    margin-bottom: 10px;
+
+    @include global.sp-layout() {
+      font-size: 32px;
+      line-height: 62px;
+    }
+  }
+}
+

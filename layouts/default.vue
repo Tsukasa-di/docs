@@ -20,9 +20,26 @@ export default {
   computed: {
     isHome: function() {
       if (this.$route.name === "gsap") {
-        return true
+        return true;
       } else {
-        return false
+        return false;
+      }
+    }
+  },
+  mounted() {
+    if (this.$route.name !== "gsap") {
+      document.querySelector("html").classList.add("isnotHome");
+    }
+  },
+  watch: {
+    "$route": function (to, from) {
+      if (from.name === "gsap") {
+        setTimeout(() => {
+          document.querySelector("html").classList.add("isnotHome");
+        }, 700);
+      }
+      if (to.name === "gsap") {
+        document.querySelector("html").classList.remove("isnotHome");
       }
     }
   }
@@ -30,7 +47,14 @@ export default {
 </script>
 
 <style lang="scss">
+@use '~/assets/sass/setting/_app' as global;
+@use 'sass:map';
+
 #main {
   margin-left: 60px;
+
+  @include global.sp-layout() {
+    margin-left: 0px;
+  }
 }
 </style>

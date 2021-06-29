@@ -1,6 +1,5 @@
 <template lang="pug">
   div.document
-    .shape
     p
       br
       |GSAP Official Document
@@ -15,28 +14,31 @@
       |This Site : GreenSock Animation Platform Document
       br
       |Copyright ©️ Tsukasa Tomioka All Rights Reserved.
-    div
-      span
-      span
-      span
+      br
+      br
+      |GitHub
+      br
+      a(
+        href="https://github.com/Tsukasa-di/docs"
+        target="_blank"
+      )
+        |https://github.com/Tsukasa-di/docs
+    documentation.documentation
 </template>
 
 <script>
-export default {
+import Documentation from "~/assets/svg/documentation.svg";
 
+export default {
+  components: {
+    Documentation
+  }
 }
 </script>
 
 <style lang="scss" scoped>
 @use '~/assets/sass/setting/app' as global;
 @use 'sass:map';
-
-.shape {
-  width: 632px;
-  height: 652px;
-  border: 1px solid map.get(global.$color, sub-thin);
-  position: relative;
-}
 
 p {
   color: map.get(global.$color, sub);

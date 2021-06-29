@@ -181,9 +181,10 @@ export default {
   flex-direction: column;
 }
 
-.title {
+p.title {
   width: 100%;
   height: 100px;
+  margin-bottom: 0;
 
   color: map.get(global.$color, _white);
   font-size: 34px;
@@ -194,8 +195,9 @@ export default {
   justify-content: center;
 }
 
-.description {
+p.description {
   margin-top: 20px;
+  margin-bottom: 0;
   width: 260px;
   height: 260px;
   overflow-y: scroll;
@@ -203,5 +205,6 @@ export default {
 
   white-space: pre-wrap;
   font-size: 18px;
+  line-height: 1.5;
 }
 </style>

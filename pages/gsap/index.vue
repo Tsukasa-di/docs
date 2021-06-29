@@ -5,7 +5,9 @@
       document
       app-title
     .select
-      selectcards
+      selectcards(
+        ref="selectcards"
+      )
 </template>
 
 <script>
@@ -25,7 +27,39 @@ export default {
     Scroll
   },
   mounted() {
+    // ===================================
+    // Definition
+    // ===================================
     const VueComponent = this;
+    function AutoScroll(targetValue) {
+      scrollTo(0, targetValue);
+    }
+    function scrollStart() {
+      // when trigger event of AutoSmoothScroll
+      // -------------------------------------------------
+      AppGsap.SmoothScroll(
+        {}, {duration: 1.5, targetValue: innerHeight, ease: "power3.inOut"}, AutoScroll
+      )
+      gsap.to("#scroll", {duration: .7, opacity: 0})
+      gsap.set(".cards-wrap", {opacity: 0, rotationY: 200})
+    };
+    function scrollFinish() {
+      // when finish event of AutoSmoothScroll
+      // -------------------------------------------------
+      VueComponent.$store.commit('changeFirstContact', false);
+      gsap.to("header", {duration: .3, opacity: 1})
+      gsap.timeline()
+        .to(VueComponent.$refs.selectcards.$el.querySelectorAll(".cards-wrap"), {
+          duration: 1,
+          stagger: .5,
+          opacity: 1,
+          rotationY: 0,
+          ease: "power3.inOut"
+        })
+    };
+    // ===================================
+    // Animation
+    // ===================================
     if (this.$store.state.firstContact) {
       // when first visit
       // -------------------------------------------------
@@ -44,28 +78,11 @@ export default {
       gsap.set("header p", {duration: .1, color: "#3A404C"})
       gsap.set("#scroll", {duration: .1, opacity: 0})
       AppGsap.SmoothScroll(
-        {target: 0}, {duration: 1, value: innerHeight, ease: "power3.inOut"}
+        {}, {duration: 1, targetValue: innerHeight, ease: "power3.inOut"}, AutoScroll
       )
     }
-    function scrollStart() {
-      // when trigger event of Auto Smooth Scroll
-      // -------------------------------------------------
-      AppGsap.SmoothScroll(
-        {target: 0}, {duration: 1.5, value: innerHeight, ease: "power3.inOut"}
-      )
-      gsap.to("#scroll", {duration: .7, opacity: 0})
-      gsap.set(".cards-wrap", {opacity: 0, rotationY: 200, rotationX: 20})
-    };
-    function scrollFinish() {
-      // when finish event of Auto Smooth Scroll
-      // -------------------------------------------------
-      VueComponent.$store.commit('changeFirstContact', false);
-      gsap.to("header", {duration: .3, opacity: 1})
-      AppGsap.AppearanceCards()
-    };
   }
 }
-
 </script>
 
 <style lang="scss" scoped>
@@ -96,5 +113,12 @@ export default {
   position: absolute;
   bottom: 50px;
   right: 50px;
+}
+
+@include global.sp-layout-lp() {
+  .app-title {
+    right: 10px;
+    bottom: 10px;
+  }
 }
 </style>
