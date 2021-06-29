@@ -3,9 +3,7 @@
     ref="appHeader"
   )
     navi
-    header(
-      :class='[headerState.class, isHomeClass]'
-    )
+    header
       .header-inner
         .navi-trigger(
           ref="naviTrigger"
@@ -16,7 +14,7 @@
           span.menu
             |MENU
         p
-          |GSAP Docs. - {{ headerState.title }}
+          |GSAP Docs. - {{ this.$store.state.currentPageInfo.title }}
         a.back-home(
           @click='gotoHome'
         )
@@ -31,54 +29,25 @@ export default {
     Navi
   },
   mounted() {
-    this.$refs.naviTrigger.addEventListener("mouseenter", event => {
-      this.$refs.appHeader.classList.add("naviHover");
-    })
-    this.$refs.naviTrigger.addEventListener("mouseleave", event => {
-      this.$refs.appHeader.classList.remove("naviHover");
-    })
-  },
-  computed: {
-    headerState: function() {
-      const output = {
-        title: "TOP",
-        class: "top",
-        isHome: true
-      };
-      if (this.$route.path == "/gsap") {
-        output.title = "TOP";
-        output.class = "top";
-        output.isHome = true;
-      } else if (this.$route.path.includes("getting-started")) {
-        output.title = "Getting Started";
-        output.class = "getting-started";
-        output.isHome = false;
-      } else if (this.$route.path.includes("learning")) {
-        output.title = "Learning";
-        output.class = "learning";
-        output.isHome = false;
-      } else if (this.$route.path.includes("samples")) {
-        output.title = "Samples";
-        output.class = "samples";
-        output.isHome = false;
-      }
-      return output;
-    },
-    isHomeClass: function() {
-      if (!this.headerState.isHome) {
-        return "false";
-      }
-    }
+    this.naviTriggerHover("mouseenter", "add");
+    this.naviTriggerHover("mouseleave", "remove");
   },
   methods: {
     gotoHome() {
-      if (!this.headerState.isHome) {
-        this.$router.push('/gsap')
-        this.$refs.appHeader.classList.remove("naviActive");
-      }
+      this.$router.push('/gsap')
+      this.$refs.appHeader.classList.remove("naviActive");
     },
     clickNaviTrigger() {
       this.$refs.appHeader.classList.toggle("naviActive");
+    },
+    naviTriggerHover(event, toggle) {
+      this.$refs.naviTrigger.addEventListener(event, () => {
+        if (toggle === "add") {
+          this.$refs.appHeader.classList.add("naviHover");
+        } else if (toggle === "remove") {
+          this.$refs.appHeader.classList.remove("naviHover");
+        }
+      })
     }
   }
 }
@@ -91,6 +60,66 @@ export default {
 p, a {
   font-family: map.get(global.$fonts, index);
 }
+
+// 現在のページに合わせたheaderの色を設定
+// ===================================================
+
+body {
+  &#top {
+    .navi-trigger {
+      display: none;
+    }
+
+    header {
+      background-color: transparent;
+
+      p {
+        color: map.get(global.$color, sub);
+      }
+
+    .back-home {
+        display: none;
+      }
+
+      &:hover {
+        background-color: transparent;
+        color: map.get(global.$color, sub);
+        cursor: unset;
+        border: none;
+
+        .back-home {
+          opacity: 0;
+          color: map.get(global.$color, sub);
+          pointer-events: none;
+        }
+      }
+    }
+  }
+
+  &#getting-started header {
+    background-color: map.get(global.$color, _yellow);
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  &#learning header {
+    background-color: map.get(global.$color, _blue);
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  &#samples header {
+    background-color: map.get(global.$color, _red);
+    &:hover {
+      background-color: transparent;
+    }
+  }
+}
+
+// header style
+// ===================================================
 
 header {
   position: fixed;
@@ -115,25 +144,6 @@ header {
     position: absolute;
     bottom: 4px;
     left: 30px;
-  }
-
-  &.top {
-    background-color: transparent;
-     p {
-       color: map.get(global.$color, sub);
-     }
-  }
-
-  &.getting-started {
-    background-color: map.get(global.$color, _yellow);
-  }
-
-  &.learning {
-    background-color: map.get(global.$color, _blue);
-  }
-
-  &.samples {
-    background-color: map.get(global.$color, _red);
   }
 
   .header-inner {
@@ -191,6 +201,7 @@ header {
     color: map.get(global.$color, _white);
 
     width: 100vh;
+    display: flex;
     justify-content: center;
     text-align: center;
 
@@ -198,8 +209,7 @@ header {
     transition: 0.7s;
   }
 
-  &.false:hover {
-    background-color: transparent;
+  &:hover {
     color: transparent;
     cursor: pointer;
     border: 1px solid map.get(global.$color, sub);
@@ -234,30 +244,48 @@ header {
   }
 }
 
-.naviHover, .naviActive {
-  header.false {
-    border: none;
+// ===================================================
+// 【mixin】naviActionStyles()
+// naviTriggerをHover & Clickしている時の
+// headerの色を設定するための処理
+// ===================================================
 
-    .back-home {
-      color: transparent;
+@mixin naviActionStyles() {
+  .naviHover, .naviActive {
+    header {
+      @content;
+      border: none;
+
+      .back-home {
+        color: transparent;
+      }
     }
+  }
+}
 
-    &.getting-started {
+body {
+  &#getting-started {
+    @include naviActionStyles() {
       background-color: map.get(global.$color, _yellow);
     }
-
-    &.learning {
+  }
+  &#learning {
+    @include naviActionStyles() {
       background-color: map.get(global.$color, _blue);
     }
-
-    &.samples {
+  }
+  &#samples {
+    @include naviActionStyles() {
       background-color: map.get(global.$color, _red);
     }
   }
 }
 
+// naviTriggerをHover中のStyle
+// ===================================================
+
 .naviHover {
-  header.false {
+  header {
     width: 80px;
 
     .navi-trigger {
@@ -272,6 +300,9 @@ header {
   }
 }
 
+// naviTriggerをClickした後のStyle
+// ===================================================
+
 .naviActive {
   #Navi {
     opacity: 1;
@@ -279,7 +310,7 @@ header {
     width: 90%;
   }
 
-  header.false {
+  header {
     width: 100vw;
     cursor: unset;
     pointer-events: none;

@@ -39,17 +39,14 @@ export default {
     },
     strikethrough: function() {
       setTimeout(() => {
-        let path = this.$route.path;
-        path = path.split("/");
-        path = path[2];
-        console.log(path);
-        this.$refs.link.forEach( node => {
-          node.parentNode.classList.remove("strikethrough");
-          if (node.dataset.link.includes(path)) {
-            node.parentNode.classList.add("strikethrough");
+        this.$refs.link.forEach( target => {
+          if (target.dataset.link.includes(this.$store.state.currentPageInfo.id)) {
+            target.parentNode.classList.add("strikethrough");
+          } else {
+            target.parentNode.classList.remove("strikethrough");
           }
-        });
-      }, 1500);
+        })
+      }, 1000);
     }
   },
   mounted() {
@@ -66,6 +63,12 @@ export default {
 <style lang="scss" scoped>
 @use '~/assets/sass/setting/app' as global;
 @use 'sass:map';
+
+body#top {
+  #Navi {
+    display: none;
+  }
+}
 
 #Navi {
   position: fixed;
@@ -97,7 +100,7 @@ export default {
     transition: .5s;
 
     &.strikethrough {
-      opacity: .9;
+      opacity: .6;
       cursor: unset;
 
       &:hover span {
