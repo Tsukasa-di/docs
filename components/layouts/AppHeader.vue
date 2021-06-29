@@ -55,7 +55,7 @@ export default {
       this.$refs.appHeader.style.pointerEvents = "none";
       setTimeout(() => {
         this.$refs.appHeader.style.pointerEvents = "visible";
-      }, 1000);
+      }, 1800);
     }
   }
 }
