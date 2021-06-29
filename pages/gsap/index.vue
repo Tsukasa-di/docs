@@ -32,7 +32,9 @@ export default {
     // ===================================
     const VueComponent = this;
     function AutoScroll(targetValue) {
-      scrollTo(0, targetValue);
+      VueComponent.$root.$el.scrollTo({
+        top: targetValue
+      });
     }
     function scrollStart() {
       // when trigger event of AutoSmoothScroll

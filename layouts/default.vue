@@ -1,9 +1,7 @@
 <template lang="pug">
   div#L-default
     app-header
-    Nuxt#main(
-      :class='{ "isHome": isHome }'
-    )
+    Nuxt#main
 </template>
 
 <script>
@@ -17,30 +15,41 @@ export default {
 		name: 'page',
 		mode: 'ease'
 	},
-  computed: {
-    isHome: function() {
-      if (this.$route.name === "gsap") {
-        return true;
+  data() {
+    return {
+      beforePageClass: {type: String}
+    }
+  },
+  methods: {
+    currentPageInfoResult: function() {
+      const currentPageInfo = {};
+      if (this.$route.path == "/gsap") {
+        currentPageInfo.id = "top";
+        currentPageInfo.title = "TOP";
+      } else if (this.$route.path.includes("getting-started")) {
+        currentPageInfo.id = "getting-started";
+        currentPageInfo.title = "Getting Started";
+      } else if (this.$route.path.includes("learning")) {
+        currentPageInfo.id = "learning";
+        currentPageInfo.title = "Learning";
+      } else if (this.$route.path.includes("samples")) {
+        currentPageInfo.id = "samples";
+        currentPageInfo.title = "Samples";
       } else {
-        return false;
+        currentPageInfo.id = "404";
+        currentPageInfo.title = "404";
       }
+      this.$store.commit("currentPageInfo", currentPageInfo)
     }
   },
   mounted() {
-    if (this.$route.name !== "gsap") {
-      document.querySelector("html").classList.add("isnotHome");
-    }
+    this.currentPageInfoResult();
+    document.querySelector("body").id = this.$store.state.currentPageInfo.id;
   },
   watch: {
-    "$route": function (to, from) {
-      if (from.name === "gsap") {
-        setTimeout(() => {
-          document.querySelector("html").classList.add("isnotHome");
-        }, 700);
-      }
-      if (to.name === "gsap") {
-        document.querySelector("html").classList.remove("isnotHome");
-      }
+    "$route": function() {
+      this.currentPageInfoResult();
+      document.querySelector("body").id = this.$store.state.currentPageInfo.id;
     }
   }
 }
