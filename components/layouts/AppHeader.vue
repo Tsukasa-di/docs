@@ -3,7 +3,7 @@
     ref="appHeader"
   )
     navi(
-      @clickNavi='animationInterval'
+      @clickNavi='refusedHover'
     )
     header
       .header-inner
@@ -51,7 +51,7 @@ export default {
         }
       })
     },
-    animationInterval() {
+    refusedHover() {
       this.$refs.appHeader.style.pointerEvents = "none";
       setTimeout(() => {
         this.$refs.appHeader.style.pointerEvents = "visible";
