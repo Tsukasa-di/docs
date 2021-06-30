@@ -3,9 +3,9 @@
     index
     .lp
       .lp-inner
-        h2
-          |Coming Soon...
-        selectcards
+        h3
+          |LearningPage Coming Soon...
+        //- selectcards
 </template>
 
 <script>
