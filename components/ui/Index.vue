@@ -100,7 +100,10 @@ a {
   height: 60px;
   font-size: 18px;
   font-weight: normal;
+  margin-top: -1px;
+  padding-bottom: 1px;
   border-bottom: 1px solid map.get(global.$color, sub-thin);
+  border-top: 1px solid map.get(global.$color, sub-thin);
 
   &:hover {
     color: map.get(global.$color, main);
@@ -123,7 +126,7 @@ a {
 
 .index-3 {
   height: 55px;
-  font-size: 16px;
+  font-size: 13px;
 
   &:hover {
     color: map.get(global.$color, main)
