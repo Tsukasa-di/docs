@@ -26,6 +26,10 @@
     margin-bottom: 30px;
   }
 
+  img {
+    margin-bottom: 30px;
+  }
+
   pre {
     margin-bottom: 30px;
   }
@@ -63,10 +67,31 @@
     font-size: 42px;
     line-height: 102px;
     margin-bottom: 10px;
+    margin-top: 30px;
 
     @include global.sp-layout() {
       font-size: 32px;
       line-height: 62px;
+    }
+  }
+
+  .image-mask {
+    border-radius: 10px;
+    overflow: hidden;
+    display: block;
+    width: 100%;
+
+    img {
+      margin-bottom: 0;
+    }
+  }
+
+  .column-2 {
+    display: flex;
+    justify-content: space-between;
+
+    & > * {
+      width: 47.5%;
     }
   }
 }

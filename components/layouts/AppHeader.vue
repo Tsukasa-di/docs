@@ -2,7 +2,9 @@
   div#app-header(
     ref="appHeader"
   )
-    navi
+    navi(
+      @clickNavi='refusedHover'
+    )
     header
       .header-inner
         .navi-trigger(
@@ -48,6 +50,12 @@ export default {
           this.$refs.appHeader.classList.remove("naviHover");
         }
       })
+    },
+    refusedHover() {
+      this.$refs.appHeader.style.pointerEvents = "none";
+      setTimeout(() => {
+        this.$refs.appHeader.style.pointerEvents = "visible";
+      }, 1800);
     }
   }
 }

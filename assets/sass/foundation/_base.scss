@@ -4,6 +4,7 @@
 body {
   height: 100vh;
   overflow: hidden;
+  background-color: map.get(global.$color, base);
 }
 
 #__nuxt {
@@ -23,6 +24,11 @@ p, pre {
   @include global.sp-layout() {
     font-size: 14px;
   }
+}
+
+img {
+  width: 100%;
+  display: block;
 }
 
 pre {

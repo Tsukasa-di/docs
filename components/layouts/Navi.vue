@@ -33,6 +33,7 @@ export default {
   methods: {
     gotoPage: function(event) {
       this.$router.push(event.target.dataset.link);
+      this.$emit("clickNavi");
       setTimeout(() => {
         this.$root.$el.querySelector("#app-header").classList.remove("naviActive");
       }, 800);
@@ -121,6 +122,8 @@ body#top {
     a {
       color: map.get(global.$color, _white);
       text-decoration: none;
+      display: block;
+      width: 100%;
     }
 
     span {

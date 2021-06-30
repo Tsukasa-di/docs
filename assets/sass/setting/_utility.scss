@@ -35,3 +35,27 @@
     }
   }
 }
+
+/* =======================
+ margin
+======================= */
+
+@for $fontSize from 1 through 10 {
+  .font-size-#{$fontSize} {
+    font-size: 1.0rem + (0.1 * $fontSize) !important;
+  }
+}
+
+/* =======================
+ margin
+======================= */
+
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
