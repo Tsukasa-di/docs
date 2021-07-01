@@ -24,34 +24,28 @@ export default {
           pageId: "getting-started",
           title: "Getting Started",
           description:
-            "GSAPの基本的な使い方を理解できるページ。\n" +
-            "・GSAPの概要\n" +
-            "・アニメーションの基本\n" +
-            "・Plugin\n" +
-            "・Easing\n" +
-            "・Timeline\n"
+            "GSAPの基本的な使い方が理解できるページ。\n" +
+            "・GSAPの魅力\n" +
+            "・GSAPの使い方3STEP\n" +
+            "・timelineの使い方\n" +
+            "・その他の基礎知識\n"
         },
         {
           pageId: "learning",
           title: "Learning",
           description:
-            "GSAPの基本的な使い方を理解できるページ。\n" +
-            "・GSAPの概要\n" +
-            "・アニメーションの基本\n" +
+            "GSAPの公式ドキュメントをベースに、深堀って理解しておきたいメソッドやプラグインの使い方をまとめたページ。\n" +
+            "・Ease\n" +
             "・Plugin\n" +
-            "・Easing\n" +
-            "・Timeline\n"
+            "etc...\n" +
+            "更新頻度は低め..."
         },
         {
           pageId: "samples",
           title: "Samples",
           description:
-            "GSAPの基本的な使い方を理解できるページ。\n" +
-            "・GSAPの概要\n" +
-            "・アニメーションの基本\n" +
-            "・Plugin\n" +
-            "・Easing\n" +
-            "・Timeline\n"
+            "当サイト作成者が個人的に気に入っているGSAPが使われているサイトをピックアップ。\n\n" +
+            "表現の幅を広げるため、インスピレーションを得るためにコレクトしています。"
         }
       ]
     }
