@@ -1,4 +1,5 @@
 @use '~/assets/sass/setting/mixin' as mixin;
+@use '~/assets/sass/setting/variable' as var;
 @use 'sass:map';
 @use "sass:math";
 
@@ -37,17 +38,7 @@
 }
 
 /* =======================
- margin
-======================= */
-
-@for $fontSize from 1 through 10 {
-  .font-size-#{$fontSize} {
-    font-size: 1.0rem + (0.1 * $fontSize) !important;
-  }
-}
-
-/* =======================
- margin
+ textAlign
 ======================= */
 
 .text-center {
@@ -58,4 +49,27 @@
 }
 .text-right {
   text-align: right;
+}
+
+/* =======================
+ contentsWrapper
+======================= */
+
+.wrapper- {
+  &border, &bg, &border--attention {
+    border-radius: 10px;
+    padding: 20px;
+  }
+
+  &border {
+    border: 1px solid map.get(var.$color, sub-thin);
+  }
+
+  &bg {
+    background-color: #efefef;
+  }
+
+  &border--attention {
+    border: 1px solid map.get(var.$color, _red);
+  }
 }

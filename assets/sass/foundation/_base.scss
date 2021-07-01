@@ -15,7 +15,7 @@ html, body, #__nuxt, #__layout, #L-default, #main {
   height: 100%;
 }
 
-p, pre {
+p, pre, ul {
   color: map.get(global.$color, sub);
   font-family: map.get(global.$fonts, text);
   line-height: 1.5;
@@ -24,6 +24,11 @@ p, pre {
   @include global.sp-layout() {
     font-size: 14px;
   }
+}
+
+li {
+  list-style: disc;
+  margin-left: 25px;
 }
 
 img {
@@ -42,6 +47,14 @@ pre {
   .pln, .pun {
     color: #cccccc;
   }
+}
+
+code {
+  background-color: #ddd;
+  font-size: .9rem;
+  border-radius: 5px;
+  padding: 3px 8px;
+  margin: 0 5px;
 }
 
 section {

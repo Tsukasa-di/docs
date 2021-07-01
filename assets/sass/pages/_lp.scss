@@ -21,7 +21,7 @@
     }
   }
 
-  p {
+  p, ul {
     line-height: 2.0;
     margin-bottom: 30px;
   }
@@ -34,10 +34,14 @@
     margin-bottom: 30px;
   }
 
-  h2 {
-    color: map.get(global.$color, main);
+  h2, h3, h4 {
+    color: map.get(global.$color, sub);
     font-family: map.get(global.$fonts, index);
     font-weight: normal;
+  }
+
+  h2 {
+    color: map.get(global.$color, main);
     font-size: 52px;
 
     height: 100px;
@@ -61,18 +65,23 @@
   }
 
   h3 {
-    color: map.get(global.$color, sub);
-    font-family: map.get(global.$fonts, index);
-    font-weight: normal;
     font-size: 42px;
     line-height: 102px;
     margin-bottom: 10px;
-    margin-top: 30px;
+    margin-top: 50px;
 
     @include global.sp-layout() {
       font-size: 32px;
       line-height: 62px;
     }
+  }
+
+  h4 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    text-decoration: underline;
+    line-height: 2.0rem;
+    margin: 45px 0 20px 0;
   }
 
   .image-mask {
