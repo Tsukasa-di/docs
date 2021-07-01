@@ -80,7 +80,7 @@ export default {
             duration: .5,
             width: 35,
             height: 35,
-            borderRadiusPercent: 50,
+            borderRadius: 35,
             onStart: function() {
               VueComponent.$refs.cardInner.classList.add(VueComponent.$refs.card.dataset.pageid);
               unClickedElsFadeOut();
